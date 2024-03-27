@@ -1,0 +1,4 @@
+variaveis_ambiente.sh
+plano
+/.terraform
+.terraform.lock.hcl
