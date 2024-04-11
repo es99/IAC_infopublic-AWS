@@ -22,3 +22,12 @@
 7. Cria um grupo de segurança _Security Groups_ para cada rede existenta na VPC
     1. Caso as _Ec2_ sejam Linux, habilita a porta 22 (SSH)
     2. Caso as _Ec2_ sejam Windows, habilitar a porta 3389 (RDP)
+
+
+### v2 - Refatoração do código para modularizar a infraestrutura:
+
+1. Transferido do _root module_ para _child module_ o recurso relacionado a VPC em _module/vpc_
+2. Transferido do _root module_ para _child module_ os recursos relacionados a subnets publica e privada em _/module/subnets_
+    1. Configurado as _route tables_ publica e privada neste mesmo modulo, bem como as associacoes das redes publica e privada a estas tabelas.
+3. Transferido do _root module_ para _child module_ os recursos refentes ao NAT Gateway em _/module/nat_gw_
+4. Criado módulo _security groups_ que cria os grupos de segurança relacionados os servidores WEB e DB
