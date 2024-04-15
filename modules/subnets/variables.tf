@@ -1,13 +1,9 @@
-variable "public-subnet_cidr" {
-  description = "Public Subnet CIDR"
-  type = string
-  default = "192.168.40.0/28"
-}
-
-variable "private-subnet_cidr" {
-  description = "Private Subnet CIDR"
-  type = string
-  default = "192.168.50.0/28"
+variable "subnets_cidr" {
+  description = "CIDR das subnets publica e privada"
+  type = object({
+    public = optional(string, "192.168.40.0/28")
+    private = optional(string, "192.168.50.0/28") 
+  })
 }
 
 variable "subnet_tags" {

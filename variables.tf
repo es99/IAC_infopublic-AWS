@@ -18,12 +18,12 @@ variable "availability_zone_c" {
 
 variable "tags_infra" {
   description = "Tag a ser utilizada em todos os recursos gerenciados pelo Terraform"
-  type = map(string)
+  type        = map(string)
   default = {
-    Owner = "Terraform"
-    Type = "IaC-Infopublic"
-    Author = "Engels Souza"
+    Owner   = "Terraform"
+    Type    = "IaC-Infopublic"
+    Author  = "Engels Souza"
     Contact = "engels.franca@gmail.com"
-    Cloud = "AWS"
+    Cloud   = "AWS"
   }
 }

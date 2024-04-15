@@ -1,6 +1,6 @@
 resource "aws_subnet" "public_subnet" {
   vpc_id                  = var.subnet_vpc_id //ID da VPC
-  cidr_block              = var.public-subnet_cidr
+  cidr_block              = var.subnets_cidr.public
   map_public_ip_on_launch = true
 
   tags = var.subnet_tags
@@ -8,7 +8,7 @@ resource "aws_subnet" "public_subnet" {
 
 resource "aws_subnet" "private_subnet" {
   vpc_id            = var.subnet_vpc_id
-  cidr_block        = var.private-subnet_cidr
+  cidr_block        = var.subnets_cidr.private
 
 
   tags = var.subnet_tags

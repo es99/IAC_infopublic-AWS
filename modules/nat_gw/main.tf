@@ -9,6 +9,4 @@ resource "aws_nat_gateway" "natgw" {
   subnet_id     = var.public_subnet_id
 
   tags = var.gateways_tags
-
-  depends_on = [aws_internet_gateway.gw]
 }

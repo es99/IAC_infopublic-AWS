@@ -30,7 +30,7 @@ resource "aws_vpc_security_group_ingress_rule" "icmp_ping" {
   to_port = -1
 }
 
-resource "aws_vpc_security_group_ingress_rule" "firebird" {
+resource "aws_vpc_security_group_ingress_rule" "web_firebird" {
   security_group_id = aws_security_group.sg-webapp-publicnet.id
   ip_protocol = "tcp"
   cidr_ipv4 = "0.0.0.0/0"
@@ -38,7 +38,7 @@ resource "aws_vpc_security_group_ingress_rule" "firebird" {
   to_port = 3050
 }
 
-resource "aws_vpc_security_group_ingress_rule" "rdp" {
+resource "aws_vpc_security_group_ingress_rule" "web_rdp" {
   security_group_id = aws_security_group.sg-webapp-publicnet.id
   ip_protocol = "tcp"
   cidr_ipv4 = "0.0.0.0/0"
@@ -46,7 +46,7 @@ resource "aws_vpc_security_group_ingress_rule" "rdp" {
   to_port = 3389
 }
 
-resource "aws_vpc_security_group_ingress_rule" "http" {
+resource "aws_vpc_security_group_ingress_rule" "web_http" {
   security_group_id = aws_security_group.sg-webapp-publicnet.id
   ip_protocol = "tcp"
   cidr_ipv4 = "0.0.0.0/0"
@@ -54,7 +54,7 @@ resource "aws_vpc_security_group_ingress_rule" "http" {
   to_port = 80
 }
 
-resource "aws_vpc_security_group_ingress_rule" "https" {
+resource "aws_vpc_security_group_ingress_rule" "web_https" {
   security_group_id = aws_security_group.sg-webapp-publicnet.id
   ip_protocol = "tcp"
   cidr_ipv4 = "0.0.0.0/0"
@@ -62,7 +62,7 @@ resource "aws_vpc_security_group_ingress_rule" "https" {
   to_port = 443
 }
 
-resource "aws_vpc_security_group_ingress_rule" "zabbix_agent" {
+resource "aws_vpc_security_group_ingress_rule" "web_zabbix_agent" {
   security_group_id = aws_security_group.sg-webapp-publicnet.id
   ip_protocol = "tcp"
   cidr_ipv4 = "0.0.0.0/0"
@@ -71,14 +71,15 @@ resource "aws_vpc_security_group_ingress_rule" "zabbix_agent" {
 }
 
 resource "aws_vpc_security_group_ingress_rule" "rdp_dbserver" {
+  description = "Acesso remoto via RDP vindo apenas do servidor WEB."
   security_group_id = aws_security_group.sg-dbserver-publicnet.id
   ip_protocol = "tcp"
-  cidr_ipv4 = aws_security_group.sg-webapp-publicnet.id
   from_port = 3389
   to_port = 3389
+  referenced_security_group_id = aws_security_group.sg-webapp-publicnet.id
 }
 
-resource "aws_vpc_security_group_ingress_rule" "zabbix_agent" {
+resource "aws_vpc_security_group_ingress_rule" "db_zabbix_agent" {
   security_group_id = aws_security_group.sg-dbserver-publicnet.id
   ip_protocol = "tcp"
   cidr_ipv4 = "0.0.0.0/0"
@@ -94,7 +95,7 @@ resource "aws_vpc_security_group_ingress_rule" "icmp_dbserver" {
   to_port = -1
 }
 
-resource "aws_vpc_security_group_ingress_rule" "custom_sqlserver" {
+resource "aws_vpc_security_group_ingress_rule" "db_custom_sqlserver" {
   security_group_id = aws_security_group.sg-dbserver-publicnet.id
   ip_protocol = "tcp"
   cidr_ipv4 = "0.0.0.0/0"
@@ -102,7 +103,7 @@ resource "aws_vpc_security_group_ingress_rule" "custom_sqlserver" {
   to_port = 1598
 }
 
-resource "aws_vpc_security_group_ingress_rule" "sql_server" {
+resource "aws_vpc_security_group_ingress_rule" "db_sql_server" {
   security_group_id = aws_security_group.sg-dbserver-publicnet.id
   ip_protocol = "tcp"
   cidr_ipv4 = "0.0.0.0/0"

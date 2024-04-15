@@ -1,15 +1,15 @@
-output "public_subnet-CIDR-block" {
-  value = aws_subnet.public_subnet.cidr_block
+output "subnet_public_cidr" {
+  value = module.subnets.public_subnet-CIDR
 }
 
-output "private_subnet-CIDR-block" {
-  value = aws_subnet.private_subnet.cidr_block
+output "subnet_private_cidr" {
+  value = module.subnets.private_subnet-CIDR
 }
 
-output "NAT-gw_privateIP" {
-  value = aws_nat_gateway.natgw.private_ip
+output "public_subnet_id" {
+  value = module.subnets.public_subnet-ID
 }
 
-output "NAT-gw_publicIP" {
-  value = aws_nat_gateway.natgw.public_ip
+output "private_subnet_id" {
+  value = module.subnets.private_subnet-ID
 }
