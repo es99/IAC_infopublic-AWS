@@ -31,3 +31,16 @@ module "security_groups" {
 
   vpc_id = module.vpc.vpc_id
 }
+
+module "ec2" {
+  source = "./modules/ec2"
+
+  ec2_atributos = {
+    ami_dbserver  = data.aws_ami.windows_servers.id
+    ami_webserver = data.aws_ami.windows_servers.id
+  }
+
+  security_group_dbserver  = [module.security_groups.sg-dbserver-ID]
+  security_group_webserver = [module.security_groups.sg-webapp-ID]
+  subnet_id                = module.subnets.public_subnet-ID
+}

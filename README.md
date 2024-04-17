@@ -26,9 +26,18 @@
 
 ### v2 - Refatoração do código para modularizar a infraestrutura:
 
-1. Transferido do _root module_ para _child module_ o recurso relacionado a VPC em _module/vpc_
-    1. Configura o _internet gateway_ neste mesmo módulo
-2. Transferido do _root module_ para _child module_ os recursos relacionados a subnets publica e privada em _/module/subnets_
-    1. Configurado as _route tables_ publica e privada neste mesmo modulo, bem como as associacoes das redes publica e privada a estas tabelas.
-3. Transferido do _root module_ para _child module_ os recursos refentes ao NAT Gateway em _/module/nat_gw_
-4. Criado módulo _security groups_ que cria os grupos de segurança relacionados os servidores WEB e DB
+__Total: 5 módulos__
+
+Module | Description
+-------|-------------
+vpc    | cria a vpc juntamente com o Internet Gateway
+subnets| cria as subnets publica e privada, assim como as route tables com suas respectivas rotas
+nat_gw | cria o nat gateway para ser utilizado como saída para internet da rede privada
+security_groups | security groups com regras para o webserver e dbserver separadamente
+ec2 | cria as ec2 
+
+#### v2.1
+
+- Refatorado _variables.tf_ dos módulos _subnets_ e _ec2_ para utilizarem _type object_ no lugar de variáveis individuais.
+- criado arquivo ami_data.tf para buscar, independentemente de região, uma ami válida do _Windows Server 2022_ para ser utilizada nas ec2.
+

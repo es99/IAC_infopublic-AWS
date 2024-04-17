@@ -1,28 +1,12 @@
-variable "ec2_ami_webserver" {
-  description = "AMI utilizada no webserver"
-  type = string
-}
-
-variable "instance_type_webserver" {
-  description = "Tipo da instancia utilizado no ec2 webserver"
-    type = string
-    default = "t2.micro"
-}
-
-variable "ec2_ami_dbserver" {
-  description = "AMI utilizada no webserver"
-  type = string
-}
-
-variable "instance_type_dbserver" {
-  description = "Tipo da instancia utilizado no ec2 dbserver"
-    type = string
-    default = "t2.micro"
-}
-
-variable "key_name" {
-  description = "Keyname para acesso"
-  type = string
+variable "ec2_atributos" {
+  description = "ami, instance type and keyname for ec2"
+  type = object({
+    ami_webserver =  string
+    ami_dbserver = string
+    instance_type_dbserver = optional(string, "t2.micro")
+    instance_type_webserver = optional(string, "t2.micro")
+    keyname = optional(string, "terraform-ec2-testes")
+  })
 }
 
 variable "security_group_webserver" {
@@ -33,11 +17,6 @@ variable "security_group_webserver" {
 variable "security_group_dbserver" {
   description = "SG utilizado para ec2 dbserver"
   type = list(string)
-}
-
-variable "tags" {
-  description = "tags a serem utilizadas no recurso"
-  type = map(string)
 }
 
 variable "subnet_id" {

@@ -1,4 +1,5 @@
-variaveis_ambiente.sh
+env_infra.sh
+env_testes.sh
 plano
 /.terraform
 .terraform.lock.hcl
