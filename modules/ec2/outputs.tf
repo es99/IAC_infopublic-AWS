@@ -43,3 +43,11 @@ output "instance_type_webserver" {
 output "instance_type_dbserver" {
   value = aws_instance.dbserver.instance_type
 }
+
+output "ec2_assumed_role-DBServer" {
+  value = aws_instance.dbserver.iam_instance_profile
+}
+
+output "ec2_assumed_role-Webserver" {
+  value = aws_instance.webserver.iam_instance_profile
+}

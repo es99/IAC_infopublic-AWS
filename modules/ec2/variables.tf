@@ -6,6 +6,7 @@ variable "ec2_atributos" {
     instance_type_dbserver = optional(string, "t2.micro")
     instance_type_webserver = optional(string, "t2.micro")
     keyname = optional(string, "terraform-ec2-testes")
+    role = optional(string)
   })
 }
 

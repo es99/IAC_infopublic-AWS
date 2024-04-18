@@ -49,3 +49,11 @@ output "ec2-dbserver-publicdns" {
 output "ec2-keyname" {
   value = module.ec2.ec2-keyname
 }
+
+output "ec2_assumed_role-DBServer" {
+  value = module.ec2.ec2_assumed_role-DBServer
+}
+
+output "ec2_assumed_role-Webserver" {
+  value = module.ec2.ec2_assumed_role-Webserver
+}

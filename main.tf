@@ -38,6 +38,7 @@ module "ec2" {
   ec2_atributos = {
     ami_dbserver  = data.aws_ami.windows_servers.id
     ami_webserver = data.aws_ami.windows_servers.id
+    role          = "InfopublicEC2-Windows"
   }
 
   security_group_dbserver  = [module.security_groups.sg-dbserver-ID]

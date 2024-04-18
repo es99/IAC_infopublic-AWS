@@ -5,6 +5,7 @@ resource "aws_instance" "webserver" {
   vpc_security_group_ids = var.security_group_webserver
 
   subnet_id = var.subnet_id
+  iam_instance_profile = var.ec2_atributos.role
 
   tags = {
     Name = "Infopublic-Webserver"
@@ -19,6 +20,7 @@ resource "aws_instance" "dbserver" {
   vpc_security_group_ids = var.security_group_dbserver
 
   subnet_id = var.subnet_id
+  iam_instance_profile = var.ec2_atributos.role
 
   tags = {
     Name = "Infopublic-DBServer"

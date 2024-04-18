@@ -41,3 +41,5 @@ ec2 | cria as ec2
 - Refatorado _variables.tf_ dos módulos _subnets_ e _ec2_ para utilizarem _type object_ no lugar de variáveis individuais.
 - criado arquivo ami_data.tf para buscar, independentemente de região, uma ami válida do _Windows Server 2022_ para ser utilizada nas ec2.
 
+#### v2.2
+- Criado uma _aws role_ para poder habilitar os resources _aws instances_ a utilizarem o bucket _S3_, _ssm management_ e _cloudwatch_, a variável foi inserida dentro um _object_, sendo opcional, ou seja, se a mesma não for setada, as instancia ec2 subiram sem nenhuma _role_/_iam profile_
