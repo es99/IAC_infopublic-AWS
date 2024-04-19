@@ -12,3 +12,20 @@ resource "aws_internet_gateway" "gw" {
 
   tags = var.tags
 }
+
+// Cria dois Elastic IP's para serem utilizados nas instancias EC2
+resource "aws_eip" "webserver" {
+  domain = "vpc"
+
+  tags = {
+    Name = "webserver-eip"
+  }
+}
+
+resource "aws_eip" "dbserver" {
+  domain = "vpc"
+
+  tags = {
+    Name = "dbserver-eip"
+  }  
+}

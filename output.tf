@@ -57,3 +57,11 @@ output "ec2_assumed_role-DBServer" {
 output "ec2_assumed_role-Webserver" {
   value = module.ec2.ec2_assumed_role-Webserver
 }
+
+output "eip_webserver" {
+  value = module.vpc.eip_webserver_ipaddress
+}
+
+output "eip_dbserver" {
+  value = module.vpc.eip_dbserver_ipaddress
+}

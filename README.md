@@ -28,13 +28,13 @@
 
 __Total: 5 módulos__
 
-Module | Description
--------|-------------
-vpc    | cria a vpc juntamente com o Internet Gateway
-subnets| cria as subnets publica e privada, assim como as route tables com suas respectivas rotas
-nat_gw | cria o nat gateway para ser utilizado como saída para internet da rede privada
-security_groups | security groups com regras para o webserver e dbserver separadamente
-ec2 | cria as ec2 
+Module | Description | inputs | outputs
+-------|-------------|--------|---------
+vpc    | cria a vpc juntamente com o Internet Gateway e eip utilizadas nas ec2 |
+subnets| cria as subnets publica e privada, assim como as route tables com suas respectivas rotas |
+nat_gw | cria o nat gateway para ser utilizado como saída para internet da rede privada |
+security_groups | security groups com regras para o webserver e dbserver separadamente |
+ec2 | cria as ec2 |
 
 #### v2.1
 
@@ -43,3 +43,6 @@ ec2 | cria as ec2
 
 #### v2.2
 - Criado uma _aws role_ para poder habilitar os resources _aws instances_ a utilizarem o bucket _S3_, _ssm management_ e _cloudwatch_, a variável foi inserida dentro um _object_, sendo opcional, ou seja, se a mesma não for setada, as instancia ec2 subiram sem nenhuma _role_/_iam profile_
+
+#### v2.3
+- Ao subir as ec2 (webserver e dbserver) ambas já adquirem um _elastic ip address_ (eip)/ip fixo essenciais para aplicação. Os _outputs_ informam o id e ipaddress dos respectivos recursos eip.

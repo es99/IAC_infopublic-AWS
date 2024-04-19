@@ -1,3 +1,13 @@
+resource "aws_eip_association" "webserver" {
+  instance_id = aws_instance.webserver.id
+  allocation_id = var.ec2_atributos.webserver_allocation_id
+}
+
+resource "aws_eip_association" "dbserver" {
+  instance_id = aws_instance.dbserver.id
+  allocation_id = var.ec2_atributos.dbserver_allocation_id
+}
+
 resource "aws_instance" "webserver" {
   ami = var.ec2_atributos.ami_webserver
   instance_type = var.ec2_atributos.instance_type_webserver

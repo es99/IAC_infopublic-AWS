@@ -36,9 +36,11 @@ module "ec2" {
   source = "./modules/ec2"
 
   ec2_atributos = {
-    ami_dbserver  = data.aws_ami.windows_servers.id
-    ami_webserver = data.aws_ami.windows_servers.id
-    role          = "InfopublicEC2-Windows"
+    ami_dbserver            = data.aws_ami.windows_servers.id
+    ami_webserver           = data.aws_ami.windows_servers.id
+    role                    = "InfopublicEC2-Windows"
+    webserver_allocation_id = module.vpc.eip_webserver_id
+    dbserver_allocation_id  = module.vpc.eip_dbserver_id
   }
 
   security_group_dbserver  = [module.security_groups.sg-dbserver-ID]
