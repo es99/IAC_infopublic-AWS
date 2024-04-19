@@ -1,8 +1,8 @@
 terraform {
   backend "s3" {
-    bucket = "estudosterraform-engels"
-    key    = "infra-infopublic.tfstate"
-    region = "us-east-2"
+    bucket = "iac-webapps-infopublic"
+    key    = "iac-webapps.tfstate"
+    region = "sa-east-1"
   }
   required_providers {
     aws = {

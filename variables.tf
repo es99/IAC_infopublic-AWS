@@ -16,6 +16,12 @@ variable "availability_zone_c" {
   default     = "us-east-2c"
 }
 
+variable "role_ec2" {
+  type        = string
+  description = "Role em que as ec2 adotarao ao subirem"
+  default     = "INFOPUBLIC_WindowsServersEC2"
+}
+
 variable "tags_infra" {
   description = "Tag a ser utilizada em todos os recursos gerenciados pelo Terraform"
   type        = map(string)

@@ -3,9 +3,9 @@ variable "ec2_atributos" {
   type = object({
     ami_webserver =  string
     ami_dbserver = string
-    instance_type_dbserver = optional(string, "t2.micro")
-    instance_type_webserver = optional(string, "t2.micro")
-    keyname = optional(string, "terraform-ec2-testes")
+    instance_type_dbserver = string
+    instance_type_webserver = string
+    keyname = optional(string)
     role = optional(string)
     webserver_allocation_id = string
     dbserver_allocation_id = string

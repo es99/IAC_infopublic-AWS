@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-east-2"
+  region = "sa-east-1"
 }
 
 module "vpc" {
@@ -36,11 +36,13 @@ module "ec2" {
   source = "./modules/ec2"
 
   ec2_atributos = {
-    ami_dbserver            = data.aws_ami.windows_servers.id
-    ami_webserver           = data.aws_ami.windows_servers.id
-    role                    = "InfopublicEC2-Windows"
+    ami_dbserver            = "ami-0fe186238277603ae"
+    ami_webserver           = "ami-03775647a18761e6d"
+    role                    = var.role_ec2
     webserver_allocation_id = module.vpc.eip_webserver_id
     dbserver_allocation_id  = module.vpc.eip_dbserver_id
+    instance_type_webserver = "r6i.large"
+    instance_type_dbserver  = "r6i.xlarge"
   }
 
   security_group_dbserver  = [module.security_groups.sg-dbserver-ID]
