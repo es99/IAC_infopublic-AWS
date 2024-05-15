@@ -65,3 +65,11 @@ output "eip_webserver" {
 output "eip_dbserver" {
   value = module.vpc.eip_dbserver_ipaddress
 }
+
+output "instance_type-DBServer" {
+  value = module.ec2.instance_type_dbserver
+}
+
+output "instance_type-WebServer" {
+  value = module.ec2.instance_type_webserver
+}

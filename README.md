@@ -19,7 +19,7 @@
 6. Cria uma tabela de rota privada
     1. Associa a rede privada a esta tabela
     2. Cria uma rota para a Internet com CIDR _0.0.0.0/0_ apontando para o NAT Gateway
-7. Cria um grupo de segurança _Security Groups_ para cada rede existenta na VPC
+7. Cria um grupo de segurança _Security Groups_ para cada rede existente na VPC
     1. Caso as _Ec2_ sejam Linux, habilita a porta 22 (SSH)
     2. Caso as _Ec2_ sejam Windows, habilitar a porta 3389 (RDP)
 
@@ -46,3 +46,10 @@ ec2 | cria as ec2 |
 
 #### v2.3
 - Ao subir as ec2 (webserver e dbserver) ambas já adquirem um _elastic ip address_ (eip)/ip fixo essenciais para aplicação. Os _outputs_ informam o id e ipaddress dos respectivos recursos eip.
+
+#### v2.4
+
+- 14-05-2024: Inserido no _output_ do módulo _ec2_ os _instance types_ tanto do DBServer, quanto WebServer.
+
+#### v.2.5
+- 14-05-2024: Alterado tipo de instância do WebServer de _m7i-flex.xlarge_ com 4vcpu e 16ram para _r7i.xlarge_ com 4vcpu e 32ram.

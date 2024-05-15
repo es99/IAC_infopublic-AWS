@@ -41,7 +41,7 @@ module "ec2" {
     role                    = var.role_ec2
     webserver_allocation_id = module.vpc.eip_webserver_id
     dbserver_allocation_id  = module.vpc.eip_dbserver_id
-    instance_type_webserver = "r6i.large"
+    instance_type_webserver = "r7i.xlarge"
     instance_type_dbserver  = "r6i.xlarge"
   }
 
