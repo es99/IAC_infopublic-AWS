@@ -8,6 +8,11 @@ resource "aws_eip_association" "dbserver" {
   allocation_id = var.ec2_atributos.dbserver_allocation_id
 }
 
+resource "aws_placement_group" "aplicativo_web" {
+  name = "app-web-server"
+  strategy = "cluster"
+}
+
 resource "aws_instance" "webserver" {
   ami = var.ec2_atributos.ami_webserver
   instance_type = var.ec2_atributos.instance_type_webserver
@@ -16,6 +21,12 @@ resource "aws_instance" "webserver" {
 
   subnet_id = var.subnet_id
   iam_instance_profile = var.ec2_atributos.role
+  placement_group = aws_placement_group.aplicativo_web.id
+
+  cpu_options {
+    core_count = 16
+    threads_per_core = 1
+  }
 
   tags = {
     Name = "Infopublic-Webserver"
@@ -28,6 +39,7 @@ resource "aws_instance" "dbserver" {
   instance_type = var.ec2_atributos.instance_type_dbserver
   key_name = var.ec2_atributos.keyname
   vpc_security_group_ids = var.security_group_dbserver
+  placement_group = aws_placement_group.aplicativo_web.id
 
   subnet_id = var.subnet_id
   iam_instance_profile = var.ec2_atributos.role

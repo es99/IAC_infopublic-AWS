@@ -36,12 +36,12 @@ module "ec2" {
   source = "./modules/ec2"
 
   ec2_atributos = {
-    ami_dbserver            = "ami-0fe186238277603ae"
-    ami_webserver           = "ami-03775647a18761e6d"
+    ami_dbserver            = "ami-0309e5ca5f466c71b"
+    ami_webserver           = "ami-01feac1a322a946d4"
     role                    = var.role_ec2
     webserver_allocation_id = module.vpc.eip_webserver_id
     dbserver_allocation_id  = module.vpc.eip_dbserver_id
-    instance_type_webserver = "r7i.xlarge"
+    instance_type_webserver = "c3.8xlarge"
     instance_type_dbserver  = "r6i.xlarge"
   }
 
