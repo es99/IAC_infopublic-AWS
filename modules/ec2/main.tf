@@ -23,11 +23,6 @@ resource "aws_instance" "webserver" {
   iam_instance_profile = var.ec2_atributos.role
   placement_group = aws_placement_group.aplicativo_web.id
 
-  cpu_options {
-    core_count = 16
-    threads_per_core = 1
-  }
-
   tags = {
     Name = "Infopublic-Webserver"
   }
