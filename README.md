@@ -53,3 +53,7 @@ ec2 | cria as ec2 |
 
 #### v.2.5
 - 14-05-2024: Alterado tipo de instância do WebServer de _m7i-flex.xlarge_ com 4vcpu e 16ram para _r7i.xlarge_ com 4vcpu e 32ram.
+
+#### v.3.0
+- 08-06-2024: Importado para a gerência do Terraform os _ts-servers_ Main (Principal) e o servidor dedicado de Pitimbu. Esta nova infra em código encontra-se localizada
+na pasta __ts-servers-infra__
