@@ -15,7 +15,7 @@ resource "aws_instance" "main" {
   host_resource_group_arn              = null
   iam_instance_profile                 = "ecsInstanceRole"
   instance_initiated_shutdown_behavior = "stop"
-  instance_type                        = "r6i.4xlarge"
+  instance_type                        = var.instance_type
   key_name                             = "windows-server-aplicativo"
   monitoring                           = false
   placement_group                      = null
